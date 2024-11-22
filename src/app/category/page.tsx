@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Category() {
   const router = useRouter();
@@ -17,65 +18,71 @@ export default function Category() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white p-4">
+    <main className="min-h-screen flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-2xl"
+        className="w-full max-w-md"
       >
-        <h1 className="text-2xl font-semibold text-center mb-3">
-          Выберите свою категорию
+        <h1 className="text-2xl font-semibold text-center mb-8 text-foreground">
+          Выберите категорию
         </h1>
-        <p className="text-gray-600 text-center mb-8">
-          Выберите категорию, которая лучше всего описывает ваши интересы. 
-          Вы можете выбирать между продуктами и услугами. 
-          Это поможет нам адаптировать предложения и задачи к вашим предпочтениям, 
-          обеспечивая более персонализированный опыт.
-        </p>
-
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-4">
-            <label className="flex items-start p-4 border rounded-lg cursor-pointer hover:border-[#4D63F5] transition-colors">
-              <input
-                type="radio"
-                name="category"
-                value="products"
-                checked={selectedCategory === 'products'}
-                onChange={(e) => setSelectedCategory('products')}
-                className="mt-1 w-4 h-4 text-[#4D63F5] border-gray-300 focus:ring-[#4D63F5]"
-              />
-              <div className="ml-4">
-                <div className="font-medium">Продукты</div>
-                <div className="text-gray-500 text-sm">
-                  Получайте предложения по товарам, участвуйте в акциях от брендов и магазинов.
-                </div>
+          <div className="grid grid-cols-2 gap-4">
+            <button
+              type="button"
+              onClick={() => setSelectedCategory('products')}
+              className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center ${
+                selectedCategory === 'products'
+                  ? 'border-primary bg-primary bg-opacity-10'
+                  : 'border-gray-300 hover:border-primary'
+              }`}
+            >
+              <div className="relative w-12 h-12 mb-2">
+                <Image
+                  src="/window.svg"
+                  alt="Products"
+                  fill
+                  className="object-contain"
+                />
               </div>
-            </label>
+              <span className={`text-sm font-medium ${
+                selectedCategory === 'products' ? 'text-primary' : 'text-foreground'
+              }`}>
+                Товары
+              </span>
+            </button>
 
-            <label className="flex items-start p-4 border rounded-lg cursor-pointer hover:border-[#4D63F5] transition-colors">
-              <input
-                type="radio"
-                name="category"
-                value="services"
-                checked={selectedCategory === 'services'}
-                onChange={(e) => setSelectedCategory('services')}
-                className="mt-1 w-4 h-4 text-[#4D63F5] border-gray-300 focus:ring-[#4D63F5]"
-              />
-              <div className="ml-4">
-                <div className="font-medium">Услуги</div>
-                <div className="text-gray-500 text-sm">
-                  Выберите услуги, которые вас интересуют, среди предложений салонов, специалистов и т. д.
-                </div>
+            <button
+              type="button"
+              onClick={() => setSelectedCategory('services')}
+              className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center ${
+                selectedCategory === 'services'
+                  ? 'border-primary bg-primary bg-opacity-10'
+                  : 'border-gray-300 hover:border-primary'
+              }`}
+            >
+              <div className="relative w-12 h-12 mb-2">
+                <Image
+                  src="/file.svg"
+                  alt="Services"
+                  fill
+                  className="object-contain"
+                />
               </div>
-            </label>
+              <span className={`text-sm font-medium ${
+                selectedCategory === 'services' ? 'text-primary' : 'text-foreground'
+              }`}>
+                Услуги
+              </span>
+            </button>
           </div>
 
           <button
             type="submit"
             disabled={!selectedCategory}
-            className="w-full text-white py-3 rounded-lg transition-colors duration-200 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ backgroundColor: '#4D63F5' }}
+            className={`button-primary ${!selectedCategory && 'opacity-50 cursor-not-allowed'}`}
           >
             Продолжить
           </button>
