@@ -28,7 +28,7 @@ export default function Home() {
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="label-text">
+            <label htmlFor="name" className="form-label">
               Имя
             </label>
             <input
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
           
           <div>
-            <label htmlFor="phone" className="label-text">
+            <label htmlFor="phone" className="form-label">
               Телефон
             </label>
             <input

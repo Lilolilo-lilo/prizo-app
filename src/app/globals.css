@@ -6,14 +6,13 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary: #4D63F5;
-  --gray-300: #D1D5DB;
-  --gray-700: #374151;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #6B7FFF;
   }
 }
 
@@ -23,15 +22,19 @@ body {
 }
 
 @layer components {
-  .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground;
-  }
-  
   .button-primary {
-    @apply w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors;
+    @apply bg-primary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity;
   }
 
-  .label-text {
+  .loading-spinner {
+    @apply w-8 h-8 border-4 border-gray-200 border-t-primary rounded-full animate-spin;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none;
+  }
+
+  .form-label {
     @apply block text-sm font-medium text-foreground mb-1;
   }
 }
