@@ -1,20 +1,28 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const PrizeCard = () => {
+  const router = useRouter();
   const [count, setCount] = useState(4);
 
   useEffect(() => {
-    // Увеличиваем счетчик каждые 5 секунд
     const interval = setInterval(() => {
       setCount(prev => prev + 1);
-    }, 5000); // 5000 мс = 5 секунд
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
+  const handleClick = () => {
+    router.push('/contest/1'); // Здесь 1 - это ID конкурса
+  };
+
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm w-[334px] mx-auto mb-4">
+    <div 
+      className="bg-white rounded-xl overflow-hidden shadow-sm w-[334px] mx-auto mb-4 cursor-pointer transition-transform hover:scale-[1.02]"
+      onClick={handleClick}
+    >
       <div className="relative">
         {/* Основное изображение */}
         <div className="relative w-[334px] h-[425px]">
@@ -49,33 +57,26 @@ const PrizeCard = () => {
           </div>
 
           {/* Разделительная линия */}
-          <div className="w-[302px] h-[1px] bg-[#F2F2F2] mx-auto mb-4" />
+          <div className="h-[1px] bg-[#E8ECEF] mb-4"></div>
 
-          {/* Нижняя часть карточки */}
-          <div className="flex justify-between items-center">
-            {/* Логотип */}
-            <div className="relative w-[96px] h-[27px]">
-              <Image
-                src="/Logo/flowwow.png"
-                alt="Company Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            {/* Аватары и бейдж */}
+          {/* Участники */}
+          <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="relative w-[71px] h-[28px]">
-                <Image
-                  src="/avatar.png"
-                  alt="User Avatar"
-                  fill
-                  className="rounded-full border-2 border-white object-cover"
-                />
+              <div className="flex -space-x-2">
+                {[1, 2, 3].map((_, index) => (
+                  <div
+                    key={index}
+                    className="w-6 h-6 rounded-full border-2 border-white bg-gray-200"
+                  />
+                ))}
               </div>
-              <div className="ml-2 bg-[#14B5FF] rounded-full px-2 py-1 flex items-center justify-center">
-                <span className="text-white text-xs">+{count}</span>
-              </div>
+              <span className="ml-2 text-xs text-[#7E8A8C]">
+                +{count} участников
+              </span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-xs font-medium text-[#193238]">250</span>
+              <span className="ml-1 text-xs text-[#7E8A8C]">баллов</span>
             </div>
           </div>
         </div>
@@ -85,24 +86,16 @@ const PrizeCard = () => {
 };
 
 const CalendarIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 2V5" stroke="#337EDD" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M16 2V5" stroke="#337EDD" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M3.5 9.09H20.5" stroke="#337EDD" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#337EDD" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M15.6947 13.7H15.7037" stroke="#337EDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M15.6947 16.7H15.7037" stroke="#337EDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M11.9955 13.7H12.0045" stroke="#337EDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M11.9955 16.7H12.0045" stroke="#337EDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8.29431 13.7H8.30329" stroke="#337EDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M8.29431 16.7H8.30329" stroke="#337EDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.6667 2.66667H3.33333C2.59695 2.66667 2 3.26362 2 4V13.3333C2 14.0697 2.59695 14.6667 3.33333 14.6667H12.6667C13.403 14.6667 14 14.0697 14 13.3333V4C14 3.26362 13.403 2.66667 12.6667 2.66667Z" stroke="#7E8A8C" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M10.6667 1.33333V4M5.33333 1.33333V4M2 6.66667H14" stroke="#7E8A8C" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
 const TimeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#3AD079" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M15.71 15.18L12.61 13.33C12.07 13.01 11.63 12.24 11.63 11.61V7.51001" stroke="#3AD079" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="#7E8A8C" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M8 4.66667V8L10 10" stroke="#7E8A8C" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 

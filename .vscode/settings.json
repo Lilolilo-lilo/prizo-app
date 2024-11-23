@@ -1,4 +1,13 @@
 {
     "files.autoSave": "onFocusChange",
-    "editor.fontFamily": "JetBrains Mono, 'Courier New', monospace"
+    "editor.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+    "css.validate": false,
+    "tailwindCSS.emmetCompletions": true,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "tailwindCSS.includeLanguages": {
+        "typescript": "javascript",
+        "typescriptreact": "javascript"
+    }
 }

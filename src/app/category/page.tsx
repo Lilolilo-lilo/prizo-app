@@ -51,10 +51,10 @@ export default function Category() {
                 className="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary"
               />
               <div className="ml-4">
-                <div className={`font-medium ${selectedCategory === 'products' ? 'text-white' : 'text-foreground'}`}>
+                <div className={`font-medium ${selectedCategory === 'products' ? 'text-gray-900' : 'text-foreground'}`}>
                   Продукты
                 </div>
-                <div className={`text-sm ${selectedCategory === 'products' ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`}>
+                <div className={`text-sm ${selectedCategory === 'products' ? 'text-gray-700' : 'text-gray-600 dark:text-gray-400'}`}>
                   Получайте предложения по товарам, участвуйте в акциях от брендов и магазинов.
                 </div>
               </div>
@@ -74,10 +74,10 @@ export default function Category() {
                 className="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary"
               />
               <div className="ml-4">
-                <div className={`font-medium ${selectedCategory === 'services' ? 'text-white' : 'text-foreground'}`}>
+                <div className={`font-medium ${selectedCategory === 'services' ? 'text-gray-900' : 'text-foreground'}`}>
                   Услуги
                 </div>
-                <div className={`text-sm ${selectedCategory === 'services' ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`}>
+                <div className={`text-sm ${selectedCategory === 'services' ? 'text-gray-700' : 'text-gray-600 dark:text-gray-400'}`}>
                   Выберите услуги, которые вас интересуют, среди предложений салонов, специалистов и т. д.
                 </div>
               </div>
