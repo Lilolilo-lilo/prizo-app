@@ -31,7 +31,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         >
           <div className="relative w-[200px] h-[200px]">
             <Image
-              src="/Logo.svg"
+              src="/Logo/Logo.svg"
               alt="Prizo Logo"
               fill
               priority

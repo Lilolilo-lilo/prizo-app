@@ -23,9 +23,10 @@ export default function Filters() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (city) {
-      console.log({ city, formats });
-      // Здесь будет навигация на следующую страницу
-      // router.push('/next-page');
+      // Сохраняем выбранные фильтры
+      localStorage.setItem('filters', JSON.stringify({ city, formats }));
+      // Перенаправляем на главную страницу
+      router.push('/main');
     }
   };
 
@@ -93,14 +94,15 @@ export default function Filters() {
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={!city}
-            className="w-full text-white py-3 rounded-lg transition-colors duration-200 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ backgroundColor: '#4D63F5' }}
-          >
-            Применить фильтры
-          </button>
+          <div className="fixed bottom-4 left-4 right-4 max-w-2xl mx-auto">
+            <button
+              type="submit"
+              disabled={!city}
+              className="button-primary w-full"
+            >
+              Продолжить
+            </button>
+          </div>
         </form>
       </motion.div>
     </main>
