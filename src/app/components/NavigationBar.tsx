@@ -6,7 +6,7 @@ const NavigationBar = () => {
   const [activeTab, setActiveTab] = useState('main');
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-20 bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)] flex items-center justify-around px-6">
+    <div className="fixed bottom-0 left-0 right-0 h-16 bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)] flex items-center justify-around px-6">
       <button
         onClick={() => setActiveTab('main')}
         className="flex flex-col items-center"

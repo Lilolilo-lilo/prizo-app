@@ -26,12 +26,12 @@ export default function PrizeDetailsPage() {
       </div>
 
       {/* Tab Menu */}
-      <div className="h-14 flex items-center px-4 border-b sticky top-0 bg-white">
+      <div className="h-12 flex items-center px-4 border-b sticky top-0 bg-white">
         {['Детали', 'Участники', 'О\u00A0нас', 'Отзывы'].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab.toLowerCase())}
-            className={`px-4 h-14 text-sm whitespace-nowrap relative ${
+            className={`px-4 h-12 text-sm whitespace-nowrap relative ${
               activeTab === tab.toLowerCase()
                 ? 'text-[#4D63F5] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#4D63F5]'
                 : 'text-[#47454F]'
@@ -43,7 +43,7 @@ export default function PrizeDetailsPage() {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto pb-24">
+      <div className="flex-1 overflow-y-auto pb-16">
         <div className="px-4 py-6 space-y-6">
           {/* Заголовок */}
           <h1 className="text-[22px] text-[#193238]">
@@ -131,7 +131,7 @@ export default function PrizeDetailsPage() {
       </div>
 
       {/* Кнопка участвовать */}
-      <div className="fixed bottom-0 left-0 right-0 px-4 py-2 bg-white flex justify-center">
+      <div className="fixed bottom-0 left-0 right-0 px-4 py-1 bg-white flex justify-center">
         <button 
           className="w-[280px] h-12 bg-[#4D63F5] text-white rounded-lg"
           onClick={handleParticipate}

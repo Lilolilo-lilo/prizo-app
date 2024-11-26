@@ -12,7 +12,7 @@ const PrizeDetailsTopBar = () => {
         onClick={() => router.back()}
       >
         <img
-          src="/icons/Back.svg"
+          src="/icons/back.svg"
           alt="Назад"
           width={24}
           height={24}
