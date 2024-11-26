@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
@@ -29,7 +29,7 @@ const SUBCATEGORIES: Record<string, { title: string; options: SubcategoryOption[
   }
 };
 
-export default function Subcategory() {
+function SubcategoryContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const type = searchParams.get('type') as 'products' | 'services';
@@ -105,5 +105,13 @@ export default function Subcategory() {
         </form>
       </motion.div>
     </main>
+  );
+}
+
+export default function Subcategory() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SubcategoryContent />
+    </Suspense>
   );
 }
