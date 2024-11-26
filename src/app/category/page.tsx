@@ -24,9 +24,6 @@ export default function Category() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-2xl"
       >
-        <h1 className="text-2xl font-semibold text-center mb-3 text-foreground">
-          Категории
-        </h1>
         <h2 className="text-xl font-medium text-center mb-2 text-foreground">
           Добро пожаловать! Давайте персонализируем ваш опыт.
         </h2>
@@ -39,7 +36,7 @@ export default function Category() {
           <div className="space-y-4">
             <label className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ${
               selectedCategory === 'products'
-                ? 'border-primary bg-primary bg-opacity-5'
+                ? 'border-primary bg-primary text-white'
                 : 'border-gray-300 hover:border-primary'
             }`}>
               <input
@@ -51,18 +48,16 @@ export default function Category() {
                 className="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary"
               />
               <div className="ml-4">
-                <div className={`font-medium ${selectedCategory === 'products' ? 'text-gray-900' : 'text-foreground'}`}>
-                  Продукты
-                </div>
-                <div className={`text-sm ${selectedCategory === 'products' ? 'text-gray-700' : 'text-gray-600 dark:text-gray-400'}`}>
+                <div className="font-medium">Продукты</div>
+                <p className={`text-sm ${selectedCategory === 'products' ? 'text-white' : 'text-gray-600'}`}>
                   Получайте предложения по товарам, участвуйте в акциях от брендов и магазинов.
-                </div>
+                </p>
               </div>
             </label>
 
             <label className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ${
               selectedCategory === 'services'
-                ? 'border-primary bg-primary bg-opacity-5'
+                ? 'border-primary bg-primary text-white'
                 : 'border-gray-300 hover:border-primary'
             }`}>
               <input
@@ -74,12 +69,10 @@ export default function Category() {
                 className="mt-1 w-4 h-4 text-primary border-gray-300 focus:ring-primary"
               />
               <div className="ml-4">
-                <div className={`font-medium ${selectedCategory === 'services' ? 'text-gray-900' : 'text-foreground'}`}>
-                  Услуги
-                </div>
-                <div className={`text-sm ${selectedCategory === 'services' ? 'text-gray-700' : 'text-gray-600 dark:text-gray-400'}`}>
+                <div className="font-medium">Услуги</div>
+                <p className={`text-sm ${selectedCategory === 'services' ? 'text-white' : 'text-gray-600'}`}>
                   Выберите услуги, которые вас интересуют, среди предложений салонов, специалистов и т. д.
-                </div>
+                </p>
               </div>
             </label>
           </div>

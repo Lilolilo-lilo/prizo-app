@@ -36,7 +36,6 @@ export default function Subcategory() {
   const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([]);
 
   const categoryData = SUBCATEGORIES[type] || SUBCATEGORIES['products'];
-
   const handleCheckboxChange = (subcategory: string) => {
     setSelectedSubcategories(prev => {
       if (prev.includes(subcategory)) {
@@ -57,22 +56,24 @@ export default function Subcategory() {
 
   return (
     <main className="min-h-screen bg-white p-4">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-2xl mx-auto"
-      >
-        <div className="flex items-center mb-6">
+      <div className="fixed top-4 left-4 right-4">
+        <div className="flex items-center mb-6 max-w-2xl mx-auto">
           <Link href="/category" className="mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <h1 className="text-2xl font-semibold">Выберите подкатегории</h1>
+          <h1 className="text-lg font-semibold">Выберите подкатегории</h1>
         </div>
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-2xl mx-auto h-full flex items-center justify-center min-h-screen"
+      >
+        <form onSubmit={handleSubmit} className="space-y-6 w-full pt-20">
           <div>
             <h2 className="text-xl font-medium mb-4">{categoryData.title}</h2>
             <div className="space-y-3">

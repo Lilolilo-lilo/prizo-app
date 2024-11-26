@@ -1,25 +1,141 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@layer components {
-  .button-primary {
-    @apply bg-primary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-200;
+:root {
+  --background: #FFFFFF;
+  --foreground: #0F172A;
+  --primary: #4D63F5;
+  --gray-300: #D1D5DB;
+  --gray-700: #374151;
+}
+
+.dark {
+  --background: #0F172A;
+  --foreground: #FFFFFF;
+  --primary: #4D63F5;
+  --gray-300: #374151;
+  --gray-700: #D1D5DB;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply text-foreground bg-background min-h-screen w-full m-0 p-0 overflow-x-hidden font-sans text-base;
   }
 
-  .loading-spinner {
-    @apply w-8 h-8 border-4 border-gray-200 border-t-primary rounded-full animate-spin;
+  * {
+    @apply box-border;
   }
 
-  .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary;
+  input[type="radio"] {
+    @apply w-4 h-4 text-primary bg-background border-gray-300 focus:ring-primary;
   }
 
-  .form-label {
-    @apply block text-sm font-medium text-foreground mb-1;
+  input[type="checkbox"] {
+    @apply w-4 h-4 text-primary bg-background border-gray-300 rounded focus:ring-primary;
   }
 }
 
-body {
-  @apply text-foreground bg-background;
+@layer components {
+  .input-field {
+    @apply w-full px-3 py-2 bg-background border border-gray-300 rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+           disabled:opacity-50 disabled:cursor-not-allowed
+           placeholder:text-gray-300;
+  }
+
+  .button-primary {
+    @apply w-full bg-primary text-white py-2.5 px-4 rounded-lg 
+           font-medium text-base
+           hover:bg-opacity-90 active:bg-opacity-100
+           disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-200 ease-in-out
+           flex items-center justify-center gap-2;
+  }
+
+  .button-secondary {
+    @apply w-full bg-background text-foreground py-2.5 px-4 rounded-lg
+           font-medium text-base
+           border border-gray-300
+           hover:bg-gray-300/10 active:bg-gray-300/20
+           disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-200 ease-in-out
+           flex items-center justify-center gap-2;
+  }
+
+  .card {
+    @apply bg-background rounded-lg border border-gray-300 p-4
+           hover:shadow-md transition-all duration-200 ease-in-out;
+  }
+
+  .radio-group {
+    @apply space-y-2;
+  }
+
+  .radio-item {
+    @apply flex items-center space-x-3;
+  }
+
+  .radio-label {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .checkbox-group {
+    @apply space-y-2;
+  }
+
+  .checkbox-item {
+    @apply flex items-center space-x-3;
+  }
+
+  .checkbox-label {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .loading-spinner {
+    @apply w-6 h-6 rounded-full;
+    border: 3px solid var(--primary);
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-foreground mb-1;
+  }
+
+  .text-heading {
+    @apply text-xl font-semibold text-foreground;
+  }
+
+  .text-subheading {
+    @apply text-base font-medium text-foreground;
+  }
+
+  .text-body {
+    @apply text-base text-foreground;
+  }
+
+  .text-small {
+    @apply text-sm text-foreground;
+  }
 }

@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  // Удаляем output: 'standalone', если не планируется использование Docker
   images: {
-    unoptimized: true
+    // Включаем оптимизацию изображений
+    unoptimized: false,
+    // Добавляем домены, если планируется загрузка изображений с внешних источников
+    domains: []
   }
 };
 

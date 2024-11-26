@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ClientLayout } from "./components/ClientLayout";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Prizo App",
-  description: "Your Modern Web Application",
+  description: "Prizo Application",
 };
 
 export default function RootLayout({
@@ -16,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
-        <ClientLayout>{children}</ClientLayout>
+    <html lang="ru" className={inter.variable}>
+      <body className={inter.className}>
+        {children}
       </body>
     </html>
   );
