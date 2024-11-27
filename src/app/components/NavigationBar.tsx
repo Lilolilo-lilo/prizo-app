@@ -1,14 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 const NavigationBar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState('main');
+
+  useEffect(() => {
+    // Определяем активный таб на основе текущего URL
+    const path = pathname?.split('/')[1] || 'main';
+    setActiveTab(path);
+  }, [pathname]);
+
+  const handleNavigation = (tab: string) => {
+    setActiveTab(tab);
+    switch (tab) {
+      case 'main':
+        router.push('/main');
+        break;
+      case 'shop':
+        router.push('/shop');
+        break;
+      case 'winners':
+        router.push('/winners');
+        break;
+      case 'profile':
+        router.push('/profile');
+        break;
+    }
+  };
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-16 bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)] flex items-center justify-around px-6">
       <button
-        onClick={() => setActiveTab('main')}
+        onClick={() => handleNavigation('main')}
         className="flex flex-col items-center"
       >
         <img
@@ -24,7 +51,7 @@ const NavigationBar = () => {
       </button>
 
       <button
-        onClick={() => setActiveTab('shop')}
+        onClick={() => handleNavigation('shop')}
         className="flex flex-col items-center"
       >
         <img
@@ -40,7 +67,7 @@ const NavigationBar = () => {
       </button>
 
       <button
-        onClick={() => setActiveTab('winners')}
+        onClick={() => handleNavigation('winners')}
         className="flex flex-col items-center"
       >
         <img
@@ -56,7 +83,7 @@ const NavigationBar = () => {
       </button>
 
       <button
-        onClick={() => setActiveTab('profile')}
+        onClick={() => handleNavigation('profile')}
         className="flex flex-col items-center"
       >
         <img
