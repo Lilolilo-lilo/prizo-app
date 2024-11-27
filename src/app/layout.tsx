@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import GlobalCounter from "./components/GlobalCounter";
 
 const inter = Inter({
-  subsets: ["latin", "cyrillic"],
-  display: "swap",
-  variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Prizo App",
-  description: "Prizo Application",
+  description: "Prize contests app",
 };
 
 export default function RootLayout({
@@ -19,8 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={inter.variable}>
+    <html lang="en">
       <body className={inter.className}>
+        <GlobalCounter />
         {children}
       </body>
     </html>

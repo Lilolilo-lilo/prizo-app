@@ -4,14 +4,26 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+const COUNTER_KEY = 'prize_counter';
+
+const getStoredCount = () => {
+  if (typeof window === 'undefined') return 4;
+  const stored = localStorage.getItem(COUNTER_KEY);
+  return stored ? parseInt(stored) : 4;
+};
+
 const PrizeCard = () => {
   const router = useRouter();
   const [count, setCount] = useState(4);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+    setCount(getStoredCount());
+
     const interval = setInterval(() => {
-      setCount(prev => prev + 1);
-    }, 5000);
+      setCount(getStoredCount());
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -80,7 +92,7 @@ const PrizeCard = () => {
                 />
               </div>
               <span className="text-xs bg-[#4D63F5] text-white px-2 py-1 rounded">
-                +{count}
+                +{isClient ? count : 4}
               </span>
             </div>
           </div>

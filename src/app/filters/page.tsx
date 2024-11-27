@@ -22,7 +22,10 @@ export default function Filters() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (city) {
+      // Сохраняем город в localStorage
+      localStorage.setItem('user_city', city);
       // Сохраняем выбранные фильтры
       localStorage.setItem('filters', JSON.stringify({ city, formats }));
       // Перенаправляем на главную страницу

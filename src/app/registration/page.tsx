@@ -4,14 +4,18 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function Home() {
+export default function RegistrationPage() {
   const router = useRouter();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ name, phone });
+    
+    // Сохраняем данные в localStorage
+    localStorage.setItem('user_name', name);
+    localStorage.setItem('user_phone', phone);
+    
     router.push('/category');
   };
 
