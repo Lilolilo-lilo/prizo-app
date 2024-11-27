@@ -74,8 +74,8 @@ interface SocialNetworkItem {
 
 const socialNetworks: readonly SocialNetworkItem[] = [
   { type: SocialNetwork.VKontakte, displayName: 'Вконтакте', icon: 'Vkontakte' },
-  { type: SocialNetwork.Telegram, displayName: 'Telegram', icon: 'telegram' },
-  { type: SocialNetwork.WhatsApp, displayName: 'WhatsApp', icon: 'whatsapp' }
+  { type: SocialNetwork.Telegram, displayName: 'Telegram', icon: 'Telegram' },
+  { type: SocialNetwork.WhatsApp, displayName: 'WhatsApp', icon: 'WhatsApp' }
 ] as const;
 
 export default function WinnersPage() {
